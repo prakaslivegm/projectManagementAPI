@@ -2,23 +2,29 @@ package com.prakashlgm.pmapi.model;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Range;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int empSysId;
+	@Size(min=4, message= "Employee ID cannot be blank or less than 4 char")
 	private String empId;
+	@Size(min=4, message= "Employee Name cannot be blank or less than 4 char")
 	private String empName;
 	private String capbCenter;
 	private Date doj;
 	private String designation;
 	private String primarySkill;
 	private String secSkill;
+	@Range(min=0, max=10)
 	private int overallExp;
 	private int projCount;
 	

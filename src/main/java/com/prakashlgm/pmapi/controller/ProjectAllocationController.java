@@ -12,6 +12,8 @@ import com.prakashlgm.pmapi.model.ProjectAllocation;
 import com.prakashlgm.pmapi.response.ResponseHandler;
 import com.prakashlgm.pmapi.service.ProjectAllocationService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 public class ProjectAllocationController {
@@ -20,7 +22,7 @@ public class ProjectAllocationController {
 	
 
 	@PostMapping("/createNewAllocation")
-	public ResponseEntity<Object> createNewProjectAllocation(@RequestBody ProjectAllocation projectAllocation) {
+	public ResponseEntity<Object> createNewProjectAllocation(@Valid @RequestBody ProjectAllocation projectAllocation) {
 		
 		projectAllocation = service.createNewAllocation(projectAllocation);
 		

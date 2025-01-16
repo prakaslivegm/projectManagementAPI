@@ -11,6 +11,8 @@ import com.prakashlgm.pmapi.model.Employee;
 import com.prakashlgm.pmapi.response.ResponseHandler;
 import com.prakashlgm.pmapi.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 public class EmployeeController {
@@ -20,12 +22,11 @@ public class EmployeeController {
 	
 
 	@PostMapping("/createNewEmployee")
-	public ResponseEntity<Object> createNewEmployee(@RequestBody Employee employee) {
+	public ResponseEntity<Object> createNewEmployee(@Valid @RequestBody Employee employee) {
 		
 		employee = service.createEmployee(employee);
 		
 		return ResponseHandler.responseBuilder("Employee created successfully", HttpStatus.CREATED, employee);
-		
 		
 	}
 
